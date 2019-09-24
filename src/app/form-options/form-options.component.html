@@ -1,0 +1,33 @@
+
+<div class="ui raised segment red inverted left floated form">
+    <div class="grouped fields ">  
+       
+        <h2 class="ui inverted header">Einstellungen</h2>
+        <form [formGroup]="optionsForm" (ngSubmit)="submit()">
+                   <div class="field">
+            <h2 class="ui horizontal inverted divider">Fragekatalog</h2>
+            <label formArrayName="CatalogueOptions" 
+                *ngFor="let Catalogue of optionsForm.controls['CatalogueOptions'].controls; let i = index">
+                    <input type="checkbox" [formControlName]="i">
+                    {{CatalogueOptions[i].Catalogue}}               
+            </label>   </div>
+        </form>
+     
+      
+        <form [formGroup]="optionsForm" (ngSubmit)="submit()">
+              <div class="field">
+            <h2 class="ui horizontal inverted divider">Fragetypen</h2>
+            
+            <label formArrayName="QuestionType" 
+                *ngFor="let Qtype of optionsForm.controls['QuestionType'].controls; let i = index">
+                    <input type="checkbox" [formControlName]="i">
+                    {{QuestionType[i].Qtype}}
+  
+            </label>     </div>
+        </form>
+  
+    </div> 
+    <div class="ui button" tabindex="0" (click)="submit()">Test</div>
+</div>     
+
+      
