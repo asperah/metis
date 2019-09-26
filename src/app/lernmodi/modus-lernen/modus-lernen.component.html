@@ -3,6 +3,29 @@
  
         <H2 class="ui inverted header center aligned" style="margin-right: 5%; margin-left: 5%">Lernmodus</H2>
 
+        <ng-container *ngFor="let question of questions">
+        <div class="ui cards" style="margin:2%">
+                <div class="card">
+                  <div class="content">
+                 <!-- <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">-->  
+                    <div class="ui sub header">
+                      Frage: {{question.questionText}}
+                    </div>
+                    <div class="description">
+                      <ng-container *ngFor="let index of ">
+                      Wähle eine Antwort: {{question.answerOptions}}</ng-container>
+                    </div>
+                  </div>
+                  <div class="extra content">
+                    <div class="ui two buttons">
+                      <div class="ui basic green button">Zurück</div>
+                      <div class="ui basic red button">Vorwärts</div>
+                    </div>
+                  </div>
+                </div>
+        </div>
+        </ng-container>
+
         <a routerLink="" class="ui right attached button" style="margin-left: 0">Home</a>
 
     </div>
