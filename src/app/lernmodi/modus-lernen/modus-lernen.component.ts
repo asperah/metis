@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { QuestionService} from '../shared/question.service';
 import { Question } from '../shared/question';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,14 +10,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./modus-lernen.component.css']
 })
 export class ModusLernenComponent implements OnInit {
-questions: Observable<Question[]>;
+@Input() question: Question;
+questions: Question[];
   constructor(private qs: QuestionService,
                private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.questions = this.qs.getAll();
+    this.qs.getAll().subscribe(res => this.questions = res);
   }
 
 }
-//questions verbinden mit html!
