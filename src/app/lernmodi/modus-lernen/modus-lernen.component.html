@@ -2,9 +2,9 @@
   
  
         <H2 class="ui inverted header center aligned" style="margin-right: 5%; margin-left: 5%">Lernmodus</H2>
-
-      <!-- <div class="item" >--> 
-        <div class="ui cards" style="margin:2%"  *ngFor="let x of questions">
+<ng-container *ngIf="questions$ | async as questions">
+           <div class="ui cards" style="margin:2%"  *ngFor="let x of questions">
+  
                 <div class="card">
                     <div class="content">
                   <div class="ui sub header">
@@ -25,7 +25,7 @@
                     </div>
                   </div>
                 </div></div>
-      
+      </ng-container>
  
         <a routerLink="" class="ui right attached button" style="margin-left: 0">Home</a>
 

@@ -1,6 +1,6 @@
 export interface Question {
     qType: Number,
-    qCalatogue: Number,
+    qCatalogue: Number,
     questionText: String,
     AnswerOptions: [String],
     CorrectAnswer:[String]
