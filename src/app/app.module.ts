@@ -16,13 +16,15 @@ import { LernmodiModule } from './lernmodi/lernmodi.module';
     AppComponent,
     FormOptionsComponent,
     UserInterfaceComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    LernmodiModule
+    LernmodiModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

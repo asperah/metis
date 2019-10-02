@@ -2,8 +2,8 @@
   
  
         <H2 class="ui inverted header center aligned" style="margin-right: 5%; margin-left: 5%">Lernmodus</H2>
-<ng-container *ngIf="questions$ | async as questions">
-           <div class="ui cards" style="margin:2%"  *ngFor="let x of questions">
+
+           <div class="ui cards" style="margin:2%"  *ngFor="let x of questionsf">
   
                 <div class="card">
                     <div class="content">
@@ -12,6 +12,7 @@
                  <i class="question circle outline icon"></i>  
                    <div class="content"> 
                       {{x.Question}}
+                      
                     </div></div>   
                  <div class="description">Wähle eine Antwort:<br>
                   <ng-container *ngFor="let index of x.AnswerOptions">
@@ -25,7 +26,7 @@
                     </div>
                   </div>
                 </div></div>
-      </ng-container>
+
  
         <a routerLink="" class="ui right attached button" style="margin-left: 0">Home</a>
 

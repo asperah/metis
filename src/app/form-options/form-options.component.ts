@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
+import { OptionsQuestService } from '../shared/options-quest.service';
 import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'mts-form-options',
@@ -17,57 +19,43 @@ export class FormOptionsComponent implements OnInit {
   ];
 
   QuestionType = [
-    {id:4, Qtype: "Multiple-Choice"},
-    {id:5, Qtype: "Single-Choice"},
-    {id:6, Qtype: "Fill-In"},
+    {id:1, Qtype: "Multiple-Choice"},
+    {id:2, Qtype: "Single-Choice"},
+    {id:3, Qtype: "Fill-In"},
   ];
 
   constructor(private fb: FormBuilder,
+              private oqs: OptionsQuestService,
               private route: ActivatedRoute,
-              private router: Router
-    ) { 
+              private router: Router) { 
 
   const formControls1 = this.CatalogueOptions.map(control => new FormControl(false));
   const formControls2 = this.QuestionType.map(control => new FormControl(false));
+  
 
   this.optionsForm = this.fb.group(
     {CatalogueOptions: new FormArray(formControls1),
-    QuestionType: new FormArray(formControls2)
+    QuestionType: new FormArray(formControls2),
     })
+
+  
   }
 
-  submitLern() {
-    const catalogueValues = this.optionsForm.value.CatalogueOptions
-      .map((checked,index) => checked ? this.CatalogueOptions[index].id : 0)
-      .filter(value => value !== null);
-    const questionValues = this.optionsForm.value.QuestionType
-      .map((checked,index) => checked ? this.QuestionType[index].id : 0)
-      .filter(value => value !== null);
-    alert(`${catalogueValues}, ${questionValues}`);
+  submitLernOp(){
+    this.oqs.submitLern(this.CatalogueOptions, this.QuestionType );
     this.router.navigate(['modus-lernen']);
   }
 
-  submitTeil() {
-    const catalogueValues = this.optionsForm.value.CatalogueOptions
-      .map((checked,index) => checked ? this.CatalogueOptions[index].id : 0)
-      .filter(value => value !== null);
-    const questionValues = this.optionsForm.value.QuestionType
-      .map((checked,index) => checked ? this.QuestionType[index].id : 0)
-      .filter(value => value !== null);
-    alert(`${catalogueValues}, ${questionValues}`);
+  submitTeilOp(){
+    this.oqs.submitLern(this.CatalogueOptions, this.QuestionType );
     this.router.navigate(['modus-teil-pruef']);
   }
 
-  submitVoll() {
-    const catalogueValues = this.optionsForm.value.CatalogueOptions
-      .map((checked,index) => checked ? this.CatalogueOptions[index].id : 0)
-      .filter(value => value !== null);
-    const questionValues = this.optionsForm.value.QuestionType
-      .map((checked,index) => checked ? this.QuestionType[index].id : 0)
-      .filter(value => value !== null);
-    alert(`${catalogueValues}, ${questionValues}`);
+  submitVollOp(){
+    this.oqs.submitLern(this.CatalogueOptions, this.QuestionType );
     this.router.navigate(['modus-voll-pruef']);
   }
+
 
   ngOnInit() {
 

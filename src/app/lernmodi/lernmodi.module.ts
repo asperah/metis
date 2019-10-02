@@ -7,6 +7,7 @@ import { ModusLernenComponent } from './modus-lernen/modus-lernen.component';
 import { ModusTeilPruefComponent } from './modus-teil-pruef/modus-teil-pruef.component';
 import { ModusVollPruefComponent } from './modus-voll-pruef/modus-voll-pruef.component';
 import { AuswertungComponent } from './auswertung/auswertung.component';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { AuswertungComponent } from './auswertung/auswertung.component';
   ],
   imports: [
     CommonModule,
-    LernmodiRoutingModule
+    LernmodiRoutingModule,
+    FilterPipeModule,
+
   ]
 })
 export class LernmodiModule { }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
-import { catchError, filter } from 'rxjs/operators';
+import { catchError, filter, map, flatMap, mergeMap } from 'rxjs/operators';
 
 import { Question } from './question';
 
@@ -16,12 +16,15 @@ export class QuestionService {
       console.error('Fehler aufgetreten!');
       return throwError(error);
       }
-  
+      questions$ : Observable<Question[]>;
+   //   questions2: Question[];
   
   constructor(private http: HttpClient) { }
-
+             
   getAll(): Observable<Question[]> {
-    return this.http.get<Question[]>(`${this.api}/questions`
-    ).pipe(catchError(this.errorHandler));
-  }
+  
+  return this.http.get<Question[]>(`${this.api}/questions`);
+
+      }
 }
+//pipe(map(res => res.filter(item => item.qType==1)),
