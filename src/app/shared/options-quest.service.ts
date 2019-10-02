@@ -1,4 +1,5 @@
 import { Injectable, forwardRef } from '@angular/core';
+import { convertToParamMap } from '@angular/router';
 
 
 
@@ -7,27 +8,23 @@ import { Injectable, forwardRef } from '@angular/core';
   providedIn: 'root'
 })
 export class OptionsQuestService {
-
-
-  resultCatalogues;
-  resultQuestions; 
-
+ 
+  resultCatalogues: string;
+  resultQuestions:string;
+  resultFinal: string[];
   constructor( ) { }
 
   submitLern(CatOpt, TypeOpt) {
+    this.resultCatalogues = CatOpt;
+    this.resultQuestions = TypeOpt;
     
-    const catalogueVal = CatOpt
-      .map((checked,index) => checked ? CatOpt[index].id : 0)
-      .filter(value => value !== null);
-    const questionVal = TypeOpt
-      .map((checked,index) => checked ? TypeOpt[index].id : 0)
-      .filter(value => value !== null);
-    alert(`${catalogueVal}, ${questionVal}`);
-    this.resultCatalogues = catalogueVal;
-    this.resultQuestions = questionVal;
+    alert(this.resultCatalogues +','+ this.resultQuestions)
 
   }
 
+  getOptions(){
+    return this.resultFinal= [this.resultCatalogues+','+this.resultQuestions];
+  }
 
   }
 

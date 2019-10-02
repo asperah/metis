@@ -19,9 +19,9 @@ export class FormOptionsComponent implements OnInit {
   ];
 
   QuestionType = [
-    {id:1, Qtype: "Multiple-Choice"},
-    {id:2, Qtype: "Single-Choice"},
-    {id:3, Qtype: "Fill-In"},
+    {id:4, Qtype: "Multiple-Choice"},
+    {id:5, Qtype: "Single-Choice"},
+    {id:6, Qtype: "Fill-In"},
   ];
 
   constructor(private fb: FormBuilder,
@@ -41,18 +41,37 @@ export class FormOptionsComponent implements OnInit {
   
   }
 
-  submitLernOp(){
-    this.oqs.submitLern(this.CatalogueOptions, this.QuestionType );
+  submitLernOp() {
+    const catalogueValues = this.optionsForm.value.CatalogueOptions
+      .map((checked,index) => checked ? this.CatalogueOptions[index].id : 0)
+      .filter(value => value !== null);
+    const questionValues = this.optionsForm.value.QuestionType
+      .map((checked,index) => checked ? this.QuestionType[index].id : 0)
+      .filter(value => value !== null);
+    this.oqs.submitLern(catalogueValues, questionValues);
     this.router.navigate(['modus-lernen']);
   }
 
   submitTeilOp(){
-    this.oqs.submitLern(this.CatalogueOptions, this.QuestionType );
+    const catalogueVal = this.optionsForm.value.CatalogueOptions
+    .map((checked,index) => checked ? this.CatalogueOptions[index].id : 0)
+    .filter(value => value !== null);
+    const questionVal = this.optionsForm.value.QuestionType
+    .map((checked,index) => checked ? this.QuestionType[index].id : 0)
+    .filter(value => value !== null);
+    alert(catalogueVal+',' +questionVal)
+    this.oqs.submitLern(catalogueVal, questionVal);
     this.router.navigate(['modus-teil-pruef']);
   }
 
   submitVollOp(){
-    this.oqs.submitLern(this.CatalogueOptions, this.QuestionType );
+    const catalogueVal = this.optionsForm.value.CatalogueOptions
+    .map((checked,index) => checked ? this.optionsForm.value.CatalogueOptions[index].id : 0)
+    .filter(value => value !== null);
+  const questionVal = this.optionsForm.value.QuestionType
+    .map((checked,index) => checked ? this.optionsForm.value.QuestionType[index].id : 0)
+    .filter(value => value !== null);
+    this.oqs.submitLern(catalogueVal, questionVal);
     this.router.navigate(['modus-voll-pruef']);
   }
 

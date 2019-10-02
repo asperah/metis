@@ -13,34 +13,38 @@ import { OptionsQuestService } from '../../shared/options-quest.service';
 export class ModusLernenComponent implements OnInit {
 
 questionsf: Question[];
-rCatalog = this.oqs.resultCatalogues;
-rQuest = this.oqs.resultQuestions;
+rc1: String[];
+resultF: string[];
+questions: string[];
 
   constructor(private oqs: OptionsQuestService,
-               ) { 
-              }
+              private qs: QuestionService
+        ){}
 
   ngOnInit() {
-   // this.getQuestions();
-   console.log(this.rCatalog);
+  this.resultF = this.oqs.getOptions();
+  alert(this.oqs.getOptions()); 
+  alert(this.resultF[0]);
+  this.rc1 = this.resultF[0].split(',', 6);
+  alert(`${this.rc1[0]},${this.rc1[1]},${this.rc1[2]},${this.rc1[3]},${this.rc1[4]},${this.rc1[5]}`);
+  this.getQuestions();
+
+   
 
 
   }
 
-  /* getQuestions (){    
-
+    getQuestions (){    
     this.qs.getAll().subscribe(res => this.questionsf = res
-      .filter(item => item.QCatalogue ==  0)
-     .filter(item => item.QCatalogue ==  this.rCatalog[1])
-      .filter(item => item.QCatalogue ==  this.rCatalog[2])
-      .filter(item => item.QCatalogue ==  this.rQuest[0])
-      .filter(item => item.QCatalogue ==  this.rQuest[1])
-      .filter(item => item.QCatalogue ==  this.rQuest[2])
-    )
+     .filter(item => item.QCatalogue == 1)      
+      .filter(item => item.QCatalogue ==  2)
+      .filter(item => item.QCatalogue == 3)
+     .filter(item => item.QType == 1)
+      .filter(item => item.QType == 2)
+      .filter(item => item.QType == 3));
+    
 
-  }*/
-
-
+  }
 }
 
      
