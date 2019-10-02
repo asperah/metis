@@ -19,9 +19,9 @@ export class FormOptionsComponent implements OnInit {
   ];
 
   QuestionType = [
-    {id:4, Qtype: "Multiple-Choice"},
-    {id:5, Qtype: "Single-Choice"},
-    {id:6, Qtype: "Fill-In"},
+    {id:1, Qtype: "Multiple-Choice"},
+    {id:2, Qtype: "Single-Choice"},
+    {id:3, Qtype: "Fill-In"},
   ];
 
   constructor(private fb: FormBuilder,
