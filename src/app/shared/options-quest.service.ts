@@ -23,7 +23,7 @@ export class OptionsQuestService {
   }
 
   getOptions(){
-    return this.resultFinal= [this.resultCatalogues+','+this.resultQuestions];
+    return this.resultFinal = [this.resultCatalogues+','+this.resultQuestions];
   }
 
   }

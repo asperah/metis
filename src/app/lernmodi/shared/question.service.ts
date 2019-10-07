@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
-import { catchError, filter, map, flatMap, mergeMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { Question } from './question';
 
@@ -17,7 +17,7 @@ export class QuestionService {
       return throwError(error);
       }
       questions$ : Observable<Question[]>;
-   //   questions2: Question[];
+      questions2: Question[];
   
   constructor(private http: HttpClient) { }
              

@@ -15,13 +15,12 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     ModusLernenComponent,
     ModusTeilPruefComponent,
     ModusVollPruefComponent,
-    AuswertungComponent,
+    AuswertungComponent
   ],
   imports: [
     CommonModule,
     LernmodiRoutingModule,
-    FilterPipeModule,
-
+    FilterPipeModule
   ]
 })
 export class LernmodiModule { }
