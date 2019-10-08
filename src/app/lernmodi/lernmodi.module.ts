@@ -8,6 +8,8 @@ import { ModusTeilPruefComponent } from './modus-teil-pruef/modus-teil-pruef.com
 import { ModusVollPruefComponent } from './modus-voll-pruef/modus-voll-pruef.component';
 import { AuswertungComponent } from './auswertung/auswertung.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { DelayDirective } from './shared/delay.directive';
+
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     ModusLernenComponent,
     ModusTeilPruefComponent,
     ModusVollPruefComponent,
-    AuswertungComponent
+    AuswertungComponent,
+    DelayDirective,
+ 
   ],
   imports: [
     CommonModule,

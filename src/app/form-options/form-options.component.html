@@ -1,54 +1,67 @@
+<div class="ui two column grid">
+    <div class="stretched row">
+        <div class="column">
+            <div class="ui raised segment red inverted form">
+                <div class="grouped fields">
+
+                    <h2 class="ui inverted header">
+                        <i class="settings icon"></i>
+                        <div class="content">
+                            Einstellungen
+                        </div>
+                    </h2>
+                    <form [formGroup]="optionsForm" (ngSubmit)="submit()">
+                        <div class="field">
+                            <h2 class="ui horizontal inverted divider">Fragekatalog</h2>
+                            <label formArrayName="CatalogueOptions"
+                                *ngFor="let Catalogue of optionsForm.controls['CatalogueOptions'].controls; let i = index">
+                                <input type="checkbox" [formControlName]="i">
+                                {{CatalogueOptions[i].Catalogue}}
+                            </label>
+                        </div>
+                    </form>
 
 
+                    <form [formGroup]="optionsForm" (ngSubmit)="submit()">
+                        <div class="field">
+                            <h2 class="ui horizontal inverted divider">Fragetypen</h2>
 
-<div class="two column grid">
-    <div class="column">
-<div class="ui raised segment red inverted left floated form">
-    <div class="grouped fields">  
-       
-        <h2 class="ui inverted header">
-            <i class="settings icon"></i>
-            <div class="content">
-                Einstellungen
+                            <label formArrayName="QuestionType"
+                                *ngFor="let Qtype of optionsForm.controls['QuestionType'].controls; let i = index">
+                                <input type="checkbox" [formControlName]="i">
+                                {{QuestionType[i].Qtype}}
+
+                            </label>
+                        </div>
+                    </form>
+
+                </div>
             </div>
-        </h2>
-        <form [formGroup]="optionsForm" (ngSubmit)="submit()">
-                   <div class="field">
-            <h2 class="ui horizontal inverted divider">Fragekatalog</h2>
-            <label formArrayName="CatalogueOptions" 
-                *ngFor="let Catalogue of optionsForm.controls['CatalogueOptions'].controls; let i = index">
-                    <input type="checkbox" [formControlName]="i">
-                    {{CatalogueOptions[i].Catalogue}}               
-            </label>   </div>
-        </form>
-     
-      
-        <form [formGroup]="optionsForm" (ngSubmit)="submit()">
-              <div class="field">
-            <h2 class="ui horizontal inverted divider">Fragetypen</h2>
-            
-            <label formArrayName="QuestionType" 
-                *ngFor="let Qtype of optionsForm.controls['QuestionType'].controls; let i = index">
-                    <input type="checkbox" [formControlName]="i">
-                    {{QuestionType[i].Qtype}}
-  
-            </label>     </div>
-        </form>
-  
-    </div> 
-</div>
-</div><div class="column">
-    <div class="ui raised red inverted left floated segment" style="padding-left:0; padding-right: 0">
-  
- 
-        <H2 class="ui inverted header center aligned">Lernmodi</H2>
+        </div>
+        <div class="column">
+            <div class="ui raised red inverted floated segment" style="padding-left:0; padding-right: 0">
 
-            <a class="ui right attached button" (click)="submitLernOp()" style="margin-right: 5%; margin-left:0; margin-bottom:5%">Lernmodus</a><br>
+                <h2 class="ui inverted header" style="padding-left: 5%">
+                    <i class="inverted graduation cap icon"></i>
+                    <div class="content">
+                        Lernmodi
+                    </div>
+                </h2>
 
-            <a class="ui right attached button" (click)="submitTeilOp()" style="margin-right: 5%; margin-bottom:5%">Teil-Prüfmodus</a> <br>
+                <h2 class="ui horizontal inverted divider">Wähle deinen Weg!</h2>
 
-            <a class="ui right attached button" (click)="submitVollOp()" style="margin-right: 5%; margin-bottom:5%">Prüfmodus</a><br>
+               
+                    <a class="ui right attached button" (click)="submitLernOp()"
+                        style="margin-right: 5%; margin-left:0; margin-bottom:5%">Lernmodus</a><br>
 
-      </div>
-  </div>
+                    <a class="ui right attached button" (click)="submitTeilOp()"
+                        style="margin-right: 5%; margin-bottom:5%">Teil-Prüfmodus</a> <br>
+
+                    <a class="ui right attached button" (click)="submitVollOp()"
+                        style="margin-right: 5%; margin-bottom:5%">Prüfmodus</a><br>
+                
+            </div>
+
+        </div>
+    </div>
 </div>

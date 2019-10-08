@@ -11,11 +11,13 @@ import { UserInterfaceComponent } from './user-interface/user-interface.componen
 
 import { LernmodiModule } from './lernmodi/lernmodi.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     FormOptionsComponent,
     UserInterfaceComponent,
+
     
   ],
   imports: [

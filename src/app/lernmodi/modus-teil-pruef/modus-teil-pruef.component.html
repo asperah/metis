@@ -1,10 +1,37 @@
-    <div class="ui raised red inverted left floated segment" style="padding-left:0; padding-right: 0">
-  
- 
-        <H2 class="ui inverted header center aligned" style="margin-right: 5%; margin-left: 5%">Teil-Prüf-Modus</H2>
-
-        <a routerLink="" class="ui right attached button" style="margin-left: 0">Home</a>
-
-    </div>
+<div class="ui raised red inverted floated segment center aligned" style="padding-left:0; padding-right: 0">
 
 
+        <H2 class="ui inverted headercenter aligned" style="margin-right: 5%; margin-left: 5%">Teil-Prüf-Modus</H2>
+      
+        <a class="ui circular button play icon" style="margin-bottom: 10%" *ngIf="this.i == -1" (click)="nextQuestion()"><i class="play icon"></i></a>
+      
+        <div class="ui cards" style="margin:2%" *ngIf="this.i !== -1">
+      
+          <div class="card">
+            <div class="content">
+              <div class="ui sub header">
+      
+                <i class="question circle outline icon"></i>
+                <div class="content">
+                  {{this.question.Question}}
+      
+                </div>
+              </div>
+              <div class="description">Wähle eine Antwort:<br>
+                <ng-container *ngFor="let index of question.AnswerOptions, index as x" >
+                  <label *mtsDelay="500 + x *300">{{index}}</label><br></ng-container>
+              </div>
+            </div>
+            <div class="extra content">
+              <div class="ui two buttons">
+                <div class="ui basic green button">Zurück</div>
+                <div class="ui basic red button" (click)="nextQuestion()">Vorwärts</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <br>
+      
+        <a routerLink="" class="ui right attached left floated button" style="margin-left: 0">Home</a>
+      
+      </div>
