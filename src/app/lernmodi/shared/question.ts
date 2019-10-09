@@ -1,7 +1,7 @@
 export interface Question {
-    QType: Number,
-    QCatalogue: Number,
-    Question: String,
-    AnswerOptions: [String],
-    CorrectAnswer:[String]
+    qType: Number,
+    qCatalogue: Number,
+    question: String,
+    answerOptions: [String],
+    correctAnswer:[String]
 }

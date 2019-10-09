@@ -10,6 +10,7 @@
                             Einstellungen
                         </div>
                     </h2>
+
                     <form [formGroup]="optionsForm" (ngSubmit)="submit()">
                         <div class="field">
                             <h2 class="ui horizontal inverted divider">Fragekatalog</h2>
@@ -20,7 +21,6 @@
                             </label>
                         </div>
                     </form>
-
 
                     <form [formGroup]="optionsForm" (ngSubmit)="submit()">
                         <div class="field">
@@ -59,6 +59,9 @@
 
                     <a class="ui right attached button" (click)="submitVollOp()"
                         style="margin-right: 5%; margin-bottom:5%">Prüfmodus</a><br>
+
+                        <a class="ui right attached button" (click)="auswertung()"
+                        style="margin-right: 5%; margin-bottom:5%">Auswertungsseitetest</a><br>
                 
             </div>
 

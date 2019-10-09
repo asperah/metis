@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ModusLernenComponent } from './modus-lernen/modus-lernen.component';
 import { ModusTeilPruefComponent } from './modus-teil-pruef/modus-teil-pruef.component';
 import { ModusVollPruefComponent } from './modus-voll-pruef/modus-voll-pruef.component';
+import { AuswertungComponent } from './auswertung/auswertung.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,11 @@ const routes: Routes = [
   {
     path:'modus-voll-pruef', 
     component: ModusVollPruefComponent
-  }
+  },
+  {
+    path:'auswertung', 
+    component: AuswertungComponent
+  },
 ];
 
 @NgModule({

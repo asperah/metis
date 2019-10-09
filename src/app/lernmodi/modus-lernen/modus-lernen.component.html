@@ -1,64 +1,99 @@
-<div class="ui raised red inverted floated segment center aligned" style="padding-left:0; padding-right: 0">
+<div class="ui raised red inverted floated segment " style="padding-left:0; padding-right: 0; min-width: 25%">
+
+  <H2 class="ui inverted header" style="margin-right: 5%; margin-left: 5%">Lernmodus</H2>
+
+<!----------------------------------------------Startbutton------------------------------------------------------>
+
+  <a class="ui circular button play icon " style="margin: 10%" *ngIf="this.i == -1" (click)="nextQuestion()">BEGINNEN! 
+    <i class="play icon"></i></a>
+
+<!---------------------------------------------------------------------------------------------------->
 
 
-  <H2 class="ui inverted headercenter aligned" style="margin-right: 5%; margin-left: 5%">Lernmodus</H2>
-
-  <a class="ui circular button play icon" style="margin-bottom: 10%" *ngIf="this.i == -1" (click)="nextQuestion()"><i
-      class="play icon"></i></a>
+<!---------------------------------------------------------------------------------------------------->
+<!---------------------------------------------Karte------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------->
+<!--------------------------------------------Frage-------------------------------------------------------->
 
   <div class="ui cards" style="margin:2%" *ngIf="this.i !== -1">
-
     <div class="card">
       <div class="content">
         <div class="ui sub header">
 
           <i class="question circle outline icon"></i>
           <div class="content">
-            {{this.question.Question}}
+            {{this.question.question}}
 
           </div>
         </div>
 
+<!-----------------------------------------------Answertypes---------------------------------------------->
+<!-----------------------------------------------FillIn----------------------------------------------------->
+
+        <ng-template [ngIf]="question.qType == 3" [ngIfElse]="choiceans">
+
+ <ng-template [ngIf]="showAns == false" [ngIfElse]="ansfill">
+              <div class="ui disabled input">
+                <input placeholder="Antwort...." type="text">
+              </div>
+                </ng-template>          
+  
+            <ng-template #ansfill >
+              <div class="ui disabled input" *ngFor="let index of question.correctAnswer, index as z">
+                <input style="background-color: lightgreen" value={{question.correctAnswer[z]}} type="text">
+              </div>
+            </ng-template>
+
+        </ng-template>
+<!----------------------------------------Wählen------------------------------------------------------------>
+
+<ng-template #choiceans>
         <ng-template [ngIf]="showAns == false" [ngIfElse]="anscor">
           <div class="description">Wähle eine Antwort:<br>
-            <ng-container *ngFor="let index of question.AnswerOptions, index as x">
+            <ng-container *ngFor="let index of question.answerOptions, index as x">
+              <input style="margin: 2%" *mtsDelay="500 + x *300" type="checkbox" disabled="disabled">
               <label *mtsDelay="500 + x *300">{{index}}</label><br></ng-container>
 
           </div>
         </ng-template>
-
-         <ng-template #anscor>
+<!-------------------------------------------Lösung sehen--------------------------------------------------------->
+        <ng-template #anscor>
           <div class="description">Wähle eine Antwort:<br>
-            <ng-container *ngFor="let index of question.AnswerOptions, index as x">
+            <ng-container *ngFor="let index of question.answerOptions, index as x">
 
               <ng-template [ngIf]="answer[x]==false" [ngIfElse]="trueAnswer">
-                
-                <label *mtsDelay="500 + x *300" style="color:red">{{index}}</label>
+                <input style="margin: 2%" type="checkbox" disabled="disabled">
+                <label>{{index}}</label>
               </ng-template>
 
               <ng-template #trueAnswer>
-                
-                <label *mtsDelay="500 + x *300" style="color:green">{{index}}</label>
+                <input style="margin: 2%" type="checkbox" disabled="disabled" checked="checked">
+                <label style="background-color:lightgreen">{{index}}</label>
               </ng-template>
               <br>
             </ng-container>
           </div>
-        </ng-template> 
+        </ng-template>
 
-     
+</ng-template>
+      </div>
+<!-----------------------------------------------AnswertypesEnd---------------------------------------------->
+
+<!-----------------------------------------------Buttons----------------------------------------------------->
+      <div class="extra content">
+        <div class="ui three buttons">
+          <div class="ui basic green button" (click)="repeatQuestion()">Zurück</div>
+          <div class="ui basic blue button" (click)="showAnswer()">Richtige Antwort anzeigen</div>
+          <div class="ui basic red button" (click)="nextQuestion()">Vorwärts</div>
+        </div>
+      </div>
     </div>
-
-  <div class="extra content">
-    <div class="ui three buttons">
-      <div class="ui basic green button" (click)="repeatQuestion()">Zurück</div>
-      <div class="ui basic blue button" (click)="showAnswer()">Richtige Antwort anzeigen</div>
-      <div class="ui basic red button" (click)="nextQuestion()">Vorwärts</div>
-    </div>  </div>
   </div>
-</div>
 
-<br>
+  <br>
 
-<a routerLink="" class="ui right attached left floated button" style="margin-left: 0">Home</a>
+<!---------------------------------------Home/Counter------------------------------------------------------------->
 
+  <a routerLink="" class="ui right attached floated button" style="margin-left: 0">Home</a>
+  <label class="ui bottom right attached label">{{this.i+1}}/{{this.questionsf.length}}</label>
 </div>

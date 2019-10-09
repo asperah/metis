@@ -54,26 +54,28 @@ export class FormOptionsComponent implements OnInit {
   }
 
   submitTeilOp(){
-    const catalogueVal = this.optionsForm.value.CatalogueOptions
-    .map((checked,index) => checked ? this.CatalogueOptions[index].id : 0)
-    .filter(value => value !== null);
-    const questionVal = this.optionsForm.value.QuestionType
-    .map((checked,index) => checked ? this.QuestionType[index].id : 0)
-    .filter(value => value !== null);
-    alert(catalogueVal+',' +questionVal)
-    this.oqs.submitLern(catalogueVal, questionVal);
+    const catalogueValues = this.optionsForm.value.CatalogueOptions
+      .map((checked,index) => checked ? this.CatalogueOptions[index].id : 0)
+      .filter(value => value !== null);
+    const questionValues = this.optionsForm.value.QuestionType
+      .map((checked,index) => checked ? this.QuestionType[index].id : 0)
+      .filter(value => value !== null);
+    this.oqs.submitLern(catalogueValues, questionValues);
     this.router.navigate(['modus-teil-pruef']);
   }
 
   submitVollOp(){
-    const catalogueVal = this.optionsForm.value.CatalogueOptions
-    .map((checked,index) => checked ? this.optionsForm.value.CatalogueOptions[index].id : 0)
-    .filter(value => value !== null);
-  const questionVal = this.optionsForm.value.QuestionType
-    .map((checked,index) => checked ? this.optionsForm.value.QuestionType[index].id : 0)
-    .filter(value => value !== null);
-    this.oqs.submitLern(catalogueVal, questionVal);
+    const catalogueValues = this.optionsForm.value.CatalogueOptions
+      .map((checked,index) => checked ? this.CatalogueOptions[index].id : 0)
+      .filter(value => value !== null);
+    const questionValues = this.optionsForm.value.QuestionType
+      .map((checked,index) => checked ? this.QuestionType[index].id : 0)
+      .filter(value => value !== null);
+    this.oqs.submitLern(catalogueValues, questionValues);
     this.router.navigate(['modus-voll-pruef']);
+  }
+  auswertung(){
+    this.router.navigate(['auswertung']);
   }
 
 

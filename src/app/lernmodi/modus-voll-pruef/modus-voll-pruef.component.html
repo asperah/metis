@@ -1,9 +1,69 @@
-    <div class="ui raised red inverted left floated segment" style="padding-left:0; padding-right: 0">
-  
- 
-        <H2 class="ui inverted header center aligned" style="margin-right: 5%; margin-left: 5%">Vollprüfmodus</H2>
+<div class="ui raised red inverted floated segment " style="padding-left:0; padding-right: 0; min-width: 25%">
 
-        <a routerLink="" class="ui right attached button" style="margin-left: 0">Home</a>
+    <H2 class="ui inverted header" style="margin-right: 5%; margin-left: 5%">Vollprüfmodus</H2>
 
+    <!----------------------------------------------Startbutton------------------------------------------------------>
+
+    <a class="ui circular button play icon " style="margin: 10%" *ngIf="this.i == -1" (click)="nextQuestion()">BEGINNEN!
+        <i class="play icon"></i></a>
+
+    <!---------------------------------------------------------------------------------------------------->
+
+
+    <!---------------------------------------------------------------------------------------------------->
+    <!---------------------------------------------Karte------------------------------------------------------->
+    <!---------------------------------------------------------------------------------------------------->
+    <!--------------------------------------------Frage-------------------------------------------------------->
+
+    <div class="ui cards" style="margin:2%" *ngIf="this.i !== -1">
+        <div class="card">
+
+            <div class="content">
+                <div class="ui sub header">
+                    <i class="question circle outline icon"></i>
+                    <div class="content">
+                        {{this.question.question}}
+                    </div>
+                </div>
+
+                <!-----------------------------------------------Answertypes---------------------------------------------->
+                <!-----------------------------------------------FillIn----------------------------------------------------->
+
+                <ng-template [ngIf]="question.qType == 3" [ngIfElse]="choiceans">
+                    <div class="ui input">
+                        <input placeholder="Antwort...." type="text">
+                    </div>
+                </ng-template>
+
+
+                <!----------------------------------------Multiplechoice/Singlechoice----------------------------------------->
+
+                <ng-template #choiceans>
+                    <div class="description">Wähle eine Antwort:<br>
+                        <ng-container *ngFor="let index of question.answerOptions, index as x">
+                            <input style="margin: 2%" type="checkbox" ngModel="x.checked">
+                            <label>{{index}}</label><br>
+                        </ng-container>
+                    </div>
+                </ng-template>
+
+            </div>
+            <!-----------------------------------------------AnswertypesEnd---------------------------------------------->
+
+            <!-----------------------------------------------Buttons----------------------------------------------------->
+            <div class="extra content">
+                <div class="ui three buttons">
+                    <div class="ui basic green button" (click)="repeatQuestion()">Zurück</div>
+                    <div class="ui basic red button" (click)="nextQuestion()">Vorwärts</div>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <br>
+
+    <!---------------------------------------Home/Counter------------------------------------------------------------->
+
+    <a routerLink="" class="ui right attached floated button" style="margin-left: 0">Home</a>
+    <label class="ui bottom right attached label">{{this.i+1}}/{{this.questionsf.length}}</label>
+</div>
