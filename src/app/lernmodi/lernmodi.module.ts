@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { LernmodiRoutingModule } from './lernmodi-routing.module';
 
@@ -24,7 +25,8 @@ import { DelayDirective } from './shared/delay.directive';
   imports: [
     CommonModule,
     LernmodiRoutingModule,
-    FilterPipeModule
+    FilterPipeModule,
+    ReactiveFormsModule
   ]
 })
 export class LernmodiModule { }

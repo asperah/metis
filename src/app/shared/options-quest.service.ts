@@ -1,8 +1,4 @@
-import { Injectable, forwardRef } from '@angular/core';
-import { convertToParamMap } from '@angular/router';
-import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
-
-
+import { Injectable, } from '@angular/core';
 
 @Injectable({
   
@@ -18,9 +14,6 @@ export class OptionsQuestService {
   submitLern(CatOpt, TypeOpt) {
     this.resultCatalogues = CatOpt;
     this.resultQuestions = TypeOpt;
-    
-    alert(this.resultCatalogues +','+ this.resultQuestions)
-
   }
 
   getOptions(){

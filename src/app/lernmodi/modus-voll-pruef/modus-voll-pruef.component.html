@@ -30,9 +30,16 @@
                 <!-----------------------------------------------FillIn----------------------------------------------------->
 
                 <ng-template [ngIf]="question.qType == 3" [ngIfElse]="choiceans">
-                    <div class="ui input">
-                        <input placeholder="Antwort...." type="text">
-                    </div>
+                    <form [formGroup]="optionsForm2" >
+                        <div class="field" >                              
+                            <div class="ui input">
+                                <input placeholder="Antwort...." type="text" formControlName="Antwort">
+                            </div>
+
+                        </div>
+                    </form>
+
+
                 </ng-template>
 
 
@@ -40,10 +47,18 @@
 
                 <ng-template #choiceans>
                     <div class="description">Wähle eine Antwort:<br>
-                        <ng-container *ngFor="let index of question.answerOptions, index as x">
-                            <input style="margin: 2%" type="checkbox" ngModel="x.checked">
-                            <label>{{index}}</label><br>
-                        </ng-container>
+                                  
+                            <form [formGroup]="optionsForm1" (ngSubmit)="submit()">
+                                <div class="field">                              
+                                    <label formArrayName="answerOptions"
+                                        *ngFor="let answerOptions of optionsForm1.controls['answerOptions'].controls; let i = index">
+                                        <input type="checkbox" [formControlName]="i">
+                                        {{question.answerOptions[i]}}<br>
+        
+                                    </label>
+                                </div>
+                            </form>       
+              
                     </div>
                 </ng-template>
 
@@ -65,5 +80,10 @@
     <!---------------------------------------Home/Counter------------------------------------------------------------->
 
     <a routerLink="" class="ui right attached floated button" style="margin-left: 0">Home</a>
+    <ng-container *ngIf="this.i != -1">
+        <a  class="ui right floated button" style="margin-right: 25% " (click)="submitRes()">Beenden/Auswerten</a>
+    </ng-container>
+    <br><br>
+
     <label class="ui bottom right attached label">{{this.i+1}}/{{this.questionsf.length}}</label>
 </div>
