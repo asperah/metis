@@ -29,7 +29,7 @@
                 <!-----------------------------------------------Answertypes---------------------------------------------->
                 <!-----------------------------------------------FillIn----------------------------------------------------->
 
-                <ng-template [ngIf]="question.qType == 3" [ngIfElse]="choiceans">
+                <ng-template [ngIf]="question.qType == typeNum" [ngIfElse]="choiceans">
                     <form [formGroup]="optionsForm2" >
                         <div class="field" >                              
                             <div class="ui input">
@@ -47,8 +47,8 @@
 
                 <ng-template #choiceans>
                     <div class="description">Wähle eine Antwort:<br>
-                                  
-                            <form [formGroup]="optionsForm1" (ngSubmit)="submit()">
+                                  <!--für die folgende FormGroup: (ngSubmit)="submit()"-->
+                            <form [formGroup]="optionsForm1">
                                 <div class="field">                              
                                     <label formArrayName="answerOptions"
                                         *ngFor="let answerOptions of optionsForm1.controls['answerOptions'].controls; let i = index">

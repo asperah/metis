@@ -19,6 +19,7 @@ export class ModusVollPruefComponent implements OnInit {
   resultF: string[];
   question: Question;
   i: number = 0 - 1;
+  typeNum = new Number(3);
 
   //--------------Variabeln für die Auswertung der Multiple-Choice-Fragen-----------
   examResults: String[]=[];
@@ -63,11 +64,11 @@ export class ModusVollPruefComponent implements OnInit {
         if(this.questionsf[this.i].qType == 3){
           this.resultFillin();
           this.examResFillIn[this.i] = this.examResultsFillIn;
-          this.examRes[this.i]= ['0','0']; 
+          this.examRes[this.i]= ['0'['0']]; 
         }else{       
         this.resultMulti();
-        this.examRes[this.i] = this.examResults;    
-        this.examResFillIn[this.i] = ['0','0'];
+        this.examRes[this.i]= this.examResults;    
+        this.examResFillIn[this.i] = ['0'['0']];
         }
       }
 
@@ -84,6 +85,19 @@ export class ModusVollPruefComponent implements OnInit {
     } else {
       if (this.i != -1) {        
         alert("Letzte Frage!")
+    
+          if(this.questionsf[this.i].qType == 3){
+            this.resultFillin();
+            this.examResFillIn[this.i] = this.examResultsFillIn;
+            this.examRes[this.i]= [this.i['0']]; 
+          }else{       
+          this.resultMulti();
+          this.examRes[this.i]= this.examResults;    
+          this.examResFillIn[this.i] = [this.i['0']];
+          
+
+          }
+      
       }
     }
   }
@@ -120,16 +134,29 @@ export class ModusVollPruefComponent implements OnInit {
 
   resultFillin() {
     this.examResultsFillIn = this.optionsForm2.value;
-    console.log(this.examResultsFillIn);
   }
 
   submitRes(){
+    this.fillUndefined();
     console.log(this.examResFillIn);
     console.log(this.examRes);
     console.log(this.questionsf);
+
+
     this.rs.submitResults(this.examRes, this.examResFillIn, this.questionsf);
 
     this.router.navigate(['auswertung']);
   }
 
+  fillUndefined(){
+    for(let u=0;this.questionsf.length > u;u++){
+
+      if(this.examRes[u]== undefined && this.examResFillIn[u] == undefined){
+
+        this.examRes[u]= [u['0']];  
+        this.examResFillIn[u] = [u['0']];
+        console.log(this.examRes);
+      }
+    }
+  }
 }
