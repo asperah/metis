@@ -45,7 +45,7 @@ export class ModusVollPruefComponent implements OnInit {
     this.rc1 = this.resultF[0].split(',', 6).map(items => parseInt(items));
     this.getQuestions();
     this.nextQuestion();
-  }  
+  }
 
   getQuestions() {
     this.qs.getAll().subscribe(res => this.questionsf = res
@@ -66,7 +66,7 @@ export class ModusVollPruefComponent implements OnInit {
 
       this.i = this.i + 1;
       this.question = this.questionsf[this.i];
- 
+
       if (this.question.qType == 3){
         this.formFillIn();
       }else{
@@ -74,9 +74,9 @@ export class ModusVollPruefComponent implements OnInit {
       }
 
     } else {
-      if (this.i != -1) {        
+      if (this.i != -1) {
         alert("Letzte Frage!")
-        this.fillResults();      
+        this.fillResults();
       }
     }
   }
@@ -104,7 +104,7 @@ export class ModusVollPruefComponent implements OnInit {
       .filter(value => value !== null);
   }
 
-  formFillIn(){   
+  formFillIn(){
     this.optionsForm2 = this.fb.group(
       {
         Antwort: ''
@@ -129,25 +129,31 @@ export class ModusVollPruefComponent implements OnInit {
     if(this.questionsf[this.i].qType == 3){
       this.resultFillin();
       this.examResFillIn[this.i] = this.examResultsFillIn;
-      this.examRes[this.i]= [this.i['0']]; 
-    }else{       
+      this.examRes[this.i]= [this.i['0']];
+    }else{
     this.resultMulti();
-    this.examRes[this.i]= this.examResults;    
+    this.examRes[this.i]= this.examResults;
     this.examResFillIn[this.i] = [this.i['0']];
     }
   }
 
   fillUndefined(){
     for(let u=0;this.questionsf.length > u;u++){
-  
-      if(this.examRes[u][0]== undefined && this.examResFillIn[u][0] == undefined){    
-        this.examRes[u]= [u['0']];  
-        this.examResFillIn[u] = [u['0']];
 
+      if(this.examRes[u]== undefined){
+        this.examRes[u]=[u['0']];
 
       }
+      else{}
+       }
+
+
+      for(let u=0;this.questionsf.length > u;u++){
+
+        if(this.examResFillIn[u] == undefined){
+          this.examResFillIn[u]=[u['0']];
+}
+else{}}
+
     }
   }
-
-
-}
